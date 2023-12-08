@@ -1,0 +1,22 @@
+USE BTL2
+
+-- Menu
+CREATE VIEW Menu
+AS
+SELECT * FROM FOODANDDRINK AS F
+WHERE F.TINHTRANG = 'Con ban';
+
+SELECT * FROM Menu;
+
+CREATE TRIGGER trig_update_food_and_drink ON FOODANDDRINK
+INSTEAD OF UPDATE(GIA)
+AS
+BEGIN
+	DECLARE @ten AS VARCHAR(100)
+	DECLARE @gia_moi AS BIGINT
+	SET @ten =
+				(
+					SELECT TEN
+					FROM inserted
+				)
+END
