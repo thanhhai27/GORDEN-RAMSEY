@@ -65,16 +65,16 @@ VALUES
 
 INSERT INTO FOODANDDRINK
 VALUES
-    ('Sup Hai San', 'Version 1', 150000, 'Tom Alaska, cua Tuyet,rau ngo,toi,hanh tim,nam huong,ca rot,muoi,tieu,ca chua', NULL,'2021-10-11','Con ban', NULL),
-    ('Gio Heo muoi chien', 'Version 1', 300000, 'Gio heo, muoi, mam, bot ngu vi huong, duong, dau an, giam', NULL,'2022-12-12','Con ban', NULL),
-    ('Loi vai bo my nuong', 'Version 1', 200000, 'Loi vai bo My, ruou vang do, o liu, khoai tay,giam,dau an,muoi,tieu', NULL,'2020-01-01','Con ban', NULL),
-    ('Xoi bo cau', 'Version 1', 250000, 'Gao nep, Bo cau, hat sen, Hanh kho,nuoc cot dua,muoi, tieu', NULL,'2021-11-20','Con ban', NULL),
-    ('Salad ca ngu', 'Version 1',200000, 'Ca ngu, rau xa lach, ca chua, mayonnaise,bo,tuong ot,giam',NULL,'2020-11-11','Con ban',NULL),
-    ('Khoai tay rocket', 'Version 1',100000,'Khoai tay, dau an,muoi,pho mai',NULL,'2022-12-12','Con ban',NULL),
-    ('Ca hoi ap chao', 'Version 1',145000,'Ca hoi, dau hao, bo,muoi,tieu,chanh',NULL,'2020-11-11','Con ban',NULL),
-    ('Nuoc ep buoi da xanh', 'Version 1',120000,'1/2 Trai buoi da xanh, chanh, da',NULL,'2022-12-12','Con ban',NULL),
-    ('Heineken Ha Lan', 'Version 1',70000,'Lua mach,nuoc',NULL,'2020-11-11','Con ban',NULL),
-    ('Coca Cola', 'Version 1',30000,'Nuoc co ga,huong lieu tu nhien, duong, caffeine',NULL,'2021-10-11','Con ban',NULL)
+    ('Sup Hai San', 1, 150000, 'Tom Alaska, cua Tuyet,rau ngo,toi,hanh tim,nam huong,ca rot,muoi,tieu,ca chua', NULL,'2021-10-11','Con ban'),
+    ('Gio Heo muoi chien', 1, 300000, 'Gio heo, muoi, mam, bot ngu vi huong, duong, dau an, giam', NULL,'2022-12-12','Con ban'),
+    ('Loi vai bo my nuong', 1, 200000, 'Loi vai bo My, ruou vang do, o liu, khoai tay,giam,dau an,muoi,tieu', NULL,'2020-01-01','Con ban'),
+    ('Xoi bo cau', 1, 250000, 'Gao nep, Bo cau, hat sen, Hanh kho,nuoc cot dua,muoi, tieu', NULL,'2021-11-20','Con ban'),
+    ('Salad ca ngu', 1,200000, 'Ca ngu, rau xa lach, ca chua, mayonnaise,bo,tuong ot,giam',NULL,'2020-11-11','Con ban'),
+    ('Khoai tay rocket', 1,100000,'Khoai tay, dau an,muoi,pho mai',NULL,'2022-12-12','Con ban'),
+    ('Ca hoi ap chao', 1,145000,'Ca hoi, dau hao, bo,muoi,tieu,chanh',NULL,'2020-11-11','Con ban'),
+    ('Nuoc ep buoi da xanh', 1,120000,'1/2 Trai buoi da xanh, chanh, da',NULL,'2022-12-12','Con ban'),
+    ('Heineken Ha Lan', 1,70000,'Lua mach,nuoc',NULL,'2020-11-11','Con ban'),
+    ('Coca Cola', 1,30000,'Nuoc co ga,huong lieu tu nhien, duong, caffeine',NULL,'2021-10-11','Con ban')
 
 INSERT INTO NHANVIEN
 VALUES
@@ -155,19 +155,19 @@ VALUES
 
 INSERT INTO MON_AN
 VALUES
-    ('Sup Hai San', 'Version 1', 'So che nguyen lieu, nau sup hai san', 'Chong chi dinh voi nguoi di ung tom va cua'),
-    ('Gio Heo muoi chien', 'Version 1', 'Ngam gio heo rut xuong trong muoi 1 ngay, sau do lay ra chien ngap dau cung voi gia vi nem nem vua du', NULL),
-    ('Loi vai bo my nuong', 'Version 1', 'Rua sach thit, ngam trong gia vi 15p sau do nuong deu 2 mat roi ap chao tam 5p', 'Chong chi dinh voi nguoi di ung voi thit bo'),
-    ('Xoi bo cau', 'Version 1', 'So che nguyen lieu, ngam thit bo cau trong gia vi tam 15p, hap xoi, nau chin bo cau', 'Chong chi dinh voi nguoi di ung voi gao nep'),
-    ('Salad ca ngu', 'Version 1','Dung thia tan nho ca ngu, tron voi xa lach, them gia vi,tron deu',NULL ),
-    ('Khoai tay rocket', 'Version 1','Rua sach khoai tay, chien ngap dau sau do rac pho mai va tieu',NULL ),
-    ('Ca hoi ap chao', 'Version 1','Phi le ca roi ap chao 2 mat cua ca voi bo va dau hao',NULL )
+    ('Sup Hai San', 1, 'So che nguyen lieu, nau sup hai san', 'Chong chi dinh voi nguoi di ung tom va cua'),
+    ('Gio Heo muoi chien', 1, 'Ngam gio heo rut xuong trong muoi 1 ngay, sau do lay ra chien ngap dau cung voi gia vi nem nem vua du', NULL),
+    ('Loi vai bo my nuong', 1, 'Rua sach thit, ngam trong gia vi 15p sau do nuong deu 2 mat roi ap chao tam 5p', 'Chong chi dinh voi nguoi di ung voi thit bo'),
+    ('Xoi bo cau', 1, 'So che nguyen lieu, ngam thit bo cau trong gia vi tam 15p, hap xoi, nau chin bo cau', 'Chong chi dinh voi nguoi di ung voi gao nep'),
+    ('Salad ca ngu', 1,'Dung thia tan nho ca ngu, tron voi xa lach, them gia vi,tron deu',NULL ),
+    ('Khoai tay rocket', 1,'Rua sach khoai tay, chien ngap dau sau do rac pho mai va tieu',NULL ),
+    ('Ca hoi ap chao', 1,'Phi le ca roi ap chao 2 mat cua ca voi bo va dau hao',NULL )
 
 INSERT INTO DO_UONG
 VALUES
-    ('Nuoc ep buoi da xanh', 'Version 1','Tinh Ca Mau'),
-    ('Heineken Ha Lan', 'Version 1','Ha Lan'),
-    ('Coca Cola', 'Version 1','My')
+    ('Nuoc ep buoi da xanh', 1,'Tinh Ca Mau'),
+    ('Heineken Ha Lan', 1,'Ha Lan'),
+    ('Coca Cola', 1,'My')
 
 INSERT INTO DONHANG_KHACHHANG
 VALUES
@@ -219,35 +219,35 @@ VALUES
 
 INSERT INTO DONHANG_FD
 VALUES
-('DH01','Gio Heo muoi chien','Version 1',0,2),
-('DH01','Sup Hai San','Version 1',0,1),
-('DH01','Xoi bo cau','Version 1',0,1),
-('DH02','Sup Hai San','Version 1',0,1),
-('DH02','Ca hoi ap chao','Version 1',0,1),
-('DH03','Khoai tay rocket','Version 1',0,1),
-('DH04','Ca hoi ap chao','Version 1',0,1),
-('DH04','Coca Cola','Version 1',0,1),
-('DH05','Loi vai bo my nuong','Version 1',0,1),
-('DH05','Xoi bo cau','Version 1',0,1),
-('DH05','Heineken Ha Lan','Version 1',0,1),
-('DH06','Loi vai bo my nuong','Version 1',0,1),
-('DH06','Gio Heo muoi chien','Version 1',0,1),
-('DH06','Salad ca ngu','Version 1',0,1),
-('DH07','Salad ca ngu','Version 1',0,1),
-('DH07','Nuoc ep buoi da xanh','Version 1',0,1),
-('DH08','Khoai tay rocket','Version 1',0,1),
-('DH08','Coca Cola','Version 1',0,1),
-('DH09','Sup Hai San','Version 1',0,1),
-('DH09','Xoi bo cau','Version 1',0,2),
-('DH09','Heineken Ha Lan','Version 1',0,1),
-('DH10','Loi vai bo my nuong','Version 1',0,1),
-('DH10','Xoi bo cau','Version 1',0,2),
-('DH10','Nuoc ep buoi da xanh','Version 1',0,1),
-('DH11','Gio Heo muoi chien','Version 1',0,1),
-('DH11','Sup Hai San','Version 1',0,2),
-('DH11','Coca Cola','Version 1',0,1),
-('DH12','Ca hoi ap chao','Version 1',0,1),
-('DH12','Salad ca ngu','Version 1',0,1)
+('DH01','Gio Heo muoi chien',1,0,2),
+('DH01','Sup Hai San',1,0,1),
+('DH01','Xoi bo cau',1,0,1),
+('DH02','Sup Hai San',1,0,1),
+('DH02','Ca hoi ap chao',1,0,1),
+('DH03','Khoai tay rocket',1,0,1),
+('DH04','Ca hoi ap chao',1,0,1),
+('DH04','Coca Cola',1,0,1),
+('DH05','Loi vai bo my nuong',1,0,1),
+('DH05','Xoi bo cau',1,0,1),
+('DH05','Heineken Ha Lan',1,0,1),
+('DH06','Loi vai bo my nuong',1,0,1),
+('DH06','Gio Heo muoi chien',1,0,1),
+('DH06','Salad ca ngu',1,0,1),
+('DH07','Salad ca ngu',1,0,1),
+('DH07','Nuoc ep buoi da xanh',1,0,1),
+('DH08','Khoai tay rocket',1,0,1),
+('DH08','Coca Cola',1,0,1),
+('DH09','Sup Hai San',1,0,1),
+('DH09','Xoi bo cau',1,0,2),
+('DH09','Heineken Ha Lan',1,0,1),
+('DH10','Loi vai bo my nuong',1,0,1),
+('DH10','Xoi bo cau',1,0,2),
+('DH10','Nuoc ep buoi da xanh',1,0,1),
+('DH11','Gio Heo muoi chien',1,0,1),
+('DH11','Sup Hai San',1,0,2),
+('DH11','Coca Cola',1,0,1),
+('DH12','Ca hoi ap chao',1,0,1),
+('DH12','Salad ca ngu',1,0,1)
 
 INSERT INTO HOADON_VOUCHER
 VALUES
@@ -289,20 +289,20 @@ VALUES
 
 INSERT INTO CHEBIEN_MON_AN
 VALUES
-('Sup Hai San','Version 1','NV01','Nguyen Thanh Hai'),
-('Gio Heo muoi chien','Version 1','NV02','Phan Thanh Binh'),
-('Loi vai bo my nuong','Version 1','NV02','Phan Thanh Binh'),
-('Xoi bo cau','Version 1','NV02','Phan Thanh Binh'),
-('Salad ca ngu','Version 1','NV01','Nguyen Thanh Hai'),
-('Khoai tay rocket','Version 1','NV01','Nguyen Thanh Hai'),
-('Ca hoi ap chao','Version 1','NV02','Phan Thanh Binh')
+('Sup Hai San',1,'NV01','Nguyen Thanh Hai'),
+('Gio Heo muoi chien',1,'NV02','Phan Thanh Binh'),
+('Loi vai bo my nuong',1,'NV02','Phan Thanh Binh'),
+('Xoi bo cau',1,'NV02','Phan Thanh Binh'),
+('Salad ca ngu',1,'NV01','Nguyen Thanh Hai'),
+('Khoai tay rocket',1,'NV01','Nguyen Thanh Hai'),
+('Ca hoi ap chao',1,'NV02','Phan Thanh Binh')
 
 INSERT INTO FD_VOUCHER_APDUNG
 VALUES
-('Gio Heo muoi chien','Version 1','V01','2'),
-('Xoi bo cau','Version 1','V02','2'),
-('Loi vai bo my nuong','Version 1','V03','1'),
-('Ca hoi ap chao','Version 1','V04','1'),
-('Ca hoi ap chao','Version 1','V05','1'),
-('Salad ca ngu','Version 1','V05','1'),
-('Sup Hai San','Version 1','V06','2')
+('Gio Heo muoi chien',1,'V01','2'),
+('Xoi bo cau',1,'V02','2'),
+('Loi vai bo my nuong',1,'V03','1'),
+('Ca hoi ap chao',1,'V04','1'),
+('Ca hoi ap chao',1,'V05','1'),
+('Salad ca ngu',1,'V05','1'),
+('Sup Hai San',1,'V06','2')
