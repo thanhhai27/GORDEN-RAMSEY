@@ -84,7 +84,7 @@ BEGIN
 END
 GO
 --2.1.b
-ALTER PROC proc_update_food_and_drink
+CREATE PROC proc_update_food_and_drink
     @TEN VARCHAR(100) = NULL,
     @GIA BIGINT = NULL,
     @NGUYENLIEU VARCHAR(100) = NULL,
@@ -92,9 +92,12 @@ ALTER PROC proc_update_food_and_drink
     @MOTA VARCHAR(100) = NULL
 AS
 BEGIN
-    IF(NOT EXISTS(SELECT *
-    FROM FOODANDDRINK
-    WHERE @TEN = TEN))
+    IF (NOT EXISTS (
+						SELECT *
+						FROM FOODANDDRINK
+						WHERE @TEN = TEN
+					)
+		)
     BEGIN
         PRINT N'Ten mon khong ton tai!'
         ROLLBACK TRAN
@@ -108,7 +111,7 @@ BEGIN
     BEGIN
         DECLARE @GIAFD BIGINT
         SELECT @GIAFD = GIA FROM FOODANDDRINK WHERE @TEN = TEN
-        IF(@GIAFD<>@GIA)
+        IF (@GIAFD<>@GIA)
         BEGIN
             UPDATE FOODANDDRINK
             SET GIA = @GIA,NGUYENLIEU = @NGUYENLIEU,MOTA = @MOTA
