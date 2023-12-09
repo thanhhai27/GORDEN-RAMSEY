@@ -26,65 +26,65 @@ VALUES
 
 INSERT INTO DONHANG 
 VALUES
-('DH01','2021-11-11','2021-11-11','An tai nha hang',NULL),
-('DH02','2023-12-06','2023-12-12','Chua giao','12, Dien Bien Phu, Phuong 21, Quan Binh Thanh, TP Ho Chi Minh'),
-('DH03','2021-12-11','2021-12-19','Da giao','44, Ly Nam De, Phuong 7, Quan 11, TP Ho Chi Minh'),
-('DH04','2022-10-11','2022-10-11','Da giao','15, Cach Mang Thang 8, Phuong 11, Quan 3, TP Ho Chi Minh'),
-('DH05','2023-11-12','2023-11-12','An tai nha hang',NULL),
-('DH06','2020-01-01','2020-01-02','Da giao','10, Ly Thuong Kiet, Phuong 7, Quan 10, TP Ho Chi Minh'),
-('DH07','2023-12-01','2023-12-12','Chua giao','30, Su Van Hanh, Phuong 12, Quan 10, TP Ho Chi Minh'),
-('DH08','2022-03-03','2022-03-04','Da giao','83, Dien Bien Phu, Phuong 15, Quan Binh Thanh, TP Ho Chi Minh'),
-('DH09','2023-12-05','2023-12-05','An tai nha hang',NULL),
-('DH10','2023-12-05','2023-12-05','An tai nha hang',NULL),
-('DH11','2022-10-11','2022-10-11','An tai nha hang',NULL),
-('DH12','2023-01-01','2023-01-04','Da giao','99, Ngo Gia Tu, Phuong 2, Quan 10, TP Ho Chi Minh')
+('DH01','2021-01-01','2021-01-01','An tai nha hang',NULL),
+('DH02','2021-02-01','2021-02-07','Chua giao','12, Dien Bien Phu, Phuong 21, Quan Binh Thanh, TP Ho Chi Minh'),
+('DH03','2021-05-02','2021-05-03','Da giao','44, Ly Nam De, Phuong 7, Quan 11, TP Ho Chi Minh'),
+('DH04','2021-06-07','2021-06-08','Da giao','15, Cach Mang Thang 8, Phuong 11, Quan 3, TP Ho Chi Minh'),
+('DH05','2021-10-11','2021-10-11','An tai nha hang',NULL),
+('DH06','2021-11-21','2021-11-29','Da giao','10, Ly Thuong Kiet, Phuong 7, Quan 10, TP Ho Chi Minh'),
+('DH07','2022-01-01','2022-01-09','Chua giao','30, Su Van Hanh, Phuong 12, Quan 10, TP Ho Chi Minh'),
+('DH08','2022-02-03','2022-02-05','Da giao','83, Dien Bien Phu, Phuong 15, Quan Binh Thanh, TP Ho Chi Minh'),
+('DH09','2022-07-02','2022-07-02','An tai nha hang',NULL),
+('DH10','2022-09-02','2022-09-02','An tai nha hang',NULL),
+('DH11','2022-11-12','2022-11-12','An tai nha hang',NULL),
+('DH12','2022-12-02','2022-12-03','Da giao','99, Ngo Gia Tu, Phuong 2, Quan 10, TP Ho Chi Minh')
 
 INSERT INTO VOUCHER 
 VALUES
-('V01',NULL,NULL,100000,NULL,'2023-10-20','2023-12-29'),
-('V02','Sup to yen hat sen,Xuc xich bo Kobe nuong','1 Bearbrick Bling',NULL,NULL,'2023-01-02','2023-02-02'),
-('V03','Loi vai bo My nuong, Sup miso, Hau chien gion, Bap gio heo xong khoi',NULL,100000,NULL,'2023-04-10','2023-04-17'),
-('V04','Xoi bo cau, 1 nuoc ep cam, 1 bia Heineken Ha Lan','2 Gau Bong',NULL,5,'2023-11-30','2023-12-5'),
-('V05','Salad cac loai dau,Dua luoi','1 chai ruou vang',NULL,10,'2023-12-30','2024-01-01'),
-('V06','Dui cuu nuong,Loi vai bo My luc lac',NULL,NULL,NULL,'2023-07-09','2023-10-01')
+('V01',NULL,NULL,100000,NULL,'2021-01-01','2021-01-07'),
+('V02','Sup to yen hat sen,Xuc xich bo Kobe nuong','1 Bearbrick Bling',NULL,NULL,'2022-07-01','2022-09-10'),
+('V03','Loi vai bo My nuong, Sup miso, Hau chien gion, Bap gio heo xong khoi',NULL,100000,NULL,'2021-10-10','2021-11-30'),
+('V04','Xoi bo cau, 1 nuoc ep cam, 1 bia Heineken Ha Lan','2 Gau Bong',NULL,5,'2021-02-01','2021-02-10'),
+('V05','Salad cac loai dau,Dua luoi','1 chai ruou vang',NULL,10,'2022-12-02','2022-12-05'),
+('V06','Dui cuu nuong,Loi vai bo My luc lac',NULL,NULL,NULL,'2022-11-10','2022-11-15')
 
 INSERT INTO HOADON 
 VALUES
-('HD01','2021-11-11',0,'Chuyen khoan ngan hang','DH01'),
-('HD02','2023-12-06',0,'Tien mat','DH02'),
-('HD03','2021-12-11',0,'Tien mat','DH03'),
-('HD04','2022-10-11',0,'Chuyen khoan ngan hang','DH04'),
-('HD05','2023-11-12',0,'Chuyen khoan ngan hang','DH05'),
-('HD06','2020-01-01',0,'Chuyen khoan ngan hang','DH06'),
-('HD07','2023-12-01',0,'Tien mat','DH07'),
-('HD08','2022-03-03',0,'Tien mat','DH08'),
-('HD09','2023-12-05',0,'Chuyen khoan ngan hang','DH09'),
-('HD10','2023-12-05',0,'Tien mat','DH10'),
-('HD11','2022-10-11',0,'Chuyen khoan ngan hang','DH11'),
-('HD12','2023-01-01',0,'Tien mat','DH12')
+('HD01','2021-01-01',900000,'Chuyen khoan ngan hang','DH01'),
+('HD02','2021-02-01',422750,'Tien mat','DH02'),
+('HD03','2021-05-02',400000,'Tien mat','DH03'),
+('HD04','2021-06-07',320000,'Chuyen khoan ngan hang','DH04'),
+('HD05','2021-10-11',420000,'Chuyen khoan ngan hang','DH05'),
+('HD06','2021-11-21',600000,'Chuyen khoan ngan hang','DH06'),
+('HD07','2022-01-01',520000,'Tien mat','DH07'),
+('HD08','2022-02-03',230000,'Tien mat','DH08'),
+('HD09','2022-07-02',720000,'Chuyen khoan ngan hang','DH09'),
+('HD10','2022-09-02',820000,'Tien mat','DH10'),
+('HD11','2022-11-12',930000,'Chuyen khoan ngan hang','DH11'),
+('HD12','2022-12-02',310500,'Tien mat','DH12')
 
 INSERT INTO FOODANDDRINK
 VALUES
-    ('Sup Hai San', 1, 150000, 'Tom Alaska, cua Tuyet,rau ngo,toi,hanh tim,nam huong,ca rot,muoi,tieu,ca chua', NULL,'2021-10-11','Con ban'),
-    ('Gio Heo muoi chien', 1, 300000, 'Gio heo, muoi, mam, bot ngu vi huong, duong, dau an, giam', NULL,'2022-12-12','Con ban'),
-    ('Loi vai bo my nuong', 1, 200000, 'Loi vai bo My, ruou vang do, o liu, khoai tay,giam,dau an,muoi,tieu', NULL,'2020-01-01','Con ban'),
-    ('Xoi bo cau', 1, 250000, 'Gao nep, Bo cau, hat sen, Hanh kho,nuoc cot dua,muoi, tieu', NULL,'2021-11-20','Con ban'),
-    ('Salad ca ngu', 1,200000, 'Ca ngu, rau xa lach, ca chua, mayonnaise,bo,tuong ot,giam',NULL,'2020-11-11','Con ban'),
-    ('Khoai tay rocket', 1,100000,'Khoai tay, dau an,muoi,pho mai',NULL,'2022-12-12','Con ban'),
-    ('Ca hoi ap chao', 1,145000,'Ca hoi, dau hao, bo,muoi,tieu,chanh',NULL,'2020-11-11','Con ban'),
-    ('Nuoc ep buoi da xanh', 1,120000,'1/2 Trai buoi da xanh, chanh, da',NULL,'2022-12-12','Con ban'),
-    ('Heineken Ha Lan', 1,70000,'Lua mach,nuoc',NULL,'2020-11-11','Con ban'),
-    ('Coca Cola', 1,30000,'Nuoc co ga,huong lieu tu nhien, duong, caffeine',NULL,'2021-10-11','Con ban')
+    ('Sup Hai San', 1, 150000, 'Tom Alaska, cua Tuyet,rau ngo,toi,hanh tim,nam huong,ca rot,muoi,tieu,ca chua', NULL,'2020-12-29','Con ban'),
+    ('Gio Heo muoi chien', 1, 300000, 'Gio heo, muoi, mam, bot ngu vi huong, duong, dau an, giam', NULL,'2020-12-29','Con ban'),
+    ('Loi vai bo my nuong', 1, 200000, 'Loi vai bo My, ruou vang do, o liu, khoai tay,giam,dau an,muoi,tieu', NULL,'2020-12-29','Con ban'),
+    ('Xoi bo cau', 1, 250000, 'Gao nep, Bo cau, hat sen, Hanh kho,nuoc cot dua,muoi, tieu', NULL,'2020-12-29','Con ban'),
+    ('Salad ca ngu', 1,200000, 'Ca ngu, rau xa lach, ca chua, mayonnaise,bo,tuong ot,giam',NULL,'2020-12-29','Con ban'),
+    ('Khoai tay rocket', 1,100000,'Khoai tay, dau an,muoi,pho mai',NULL,'2020-12-29','Con ban'),
+    ('Ca hoi ap chao', 1,145000,'Ca hoi, dau hao, bo,muoi,tieu,chanh',NULL,'2020-12-29','Con ban'),
+    ('Nuoc ep buoi da xanh', 1,120000,'1/2 Trai buoi da xanh, chanh, da',NULL,'2020-12-29','Con ban'),
+    ('Heineken', 1,70000,'Lua mach,nuoc',NULL,'2020-12-29','Con ban'),
+    ('Coca Cola', 1,30000,'Nuoc co ga,huong lieu tu nhien, duong, caffeine',NULL,'2020-12-29','Con ban')
 
 INSERT INTO NHANVIEN
 VALUES
-('NV01','Nguyen Thanh Hai','Nam','2003-07-02','To dan pho Hoa Tien, Phuong Cam Nghia, TP Cam Ranh, Tinh Khanh Hoa','2019-12-12','MB:32758740','Bang Dai Hoc',10000000,NULL,NULL),
-('NV02','Phan Thanh Binh','Nam','2003-10-13','62 Vo Van Tan, Phuong 6, Quan 3, TP Ho Chi Minh','2019-01-01','VCB:028374072','Chung chi IELTS 7.0',NULL,30000,'NV01'),
-('NV03','Quach Trung Hao','Nam','2002-11-12','27 Tran Quoc Thao, Phuong 6, Quan 3, TP Ho Chi Minh','2019-10-01','TCB:02837013','Bang Dai Hoc',NULL,29000,'NV01'),
-('NV04','Le Quang Phuc','Nam','2001-01-01','7 Nguyen Chi Thanh, TP Da Lat, Tinh Lam Dong','2023-02-27','MB:02834031','Bang Dai Hoc',8000000,NULL,'NV01'),
-('NV05','Nguyen Thanh Tuan','Nam','2004-10-10','121 Xo Viet Nghe Tinh, Phuong 17, Quan Binh Thanh, TP Ho Chi Minh','2022-11-11','ACB:028740113','Bang TOEIC 650',9500000,NULL,'NV01'),
-('NV06','Nguyen Thi Dao','Nu','2005-11-11','64 Nguyen Thoi Trung, Phuong 6, Quan 5, TP Ho Chi Minh','2023-10-10','VCB:01387049',NULL,NULL,27000,'NV01'),
-('NV07','Cao Hoang Cam Tu','Nu','2003-04-21','To dan pho Hoa Binh, Phuong Cam Phuc Bac, TP Cam Ranh, Tinh Khanh Hoa','2017-01-09','MB:013801029','Bang Ke Toan',10000000,NULL,'NV01')
+('NV01','Nguyen Thanh Hai','Nam','2003-07-02','To dan pho Hoa Tien, Phuong Cam Nghia, TP Cam Ranh, Tinh Khanh Hoa','2020-12-12','MB:32758740','Bang Dai Hoc',10000000,NULL,NULL),
+('NV02','Phan Thanh Binh','Nam','2003-10-13','62 Vo Van Tan, Phuong 6, Quan 3, TP Ho Chi Minh','2020-12-25','VCB:028374072','Chung chi IELTS 7.0',NULL,30000,'NV01'),
+('NV03','Quach Trung Hao','Nam','2002-11-12','27 Tran Quoc Thao, Phuong 6, Quan 3, TP Ho Chi Minh','2020-12-25','TCB:02837013','Bang Dai Hoc',NULL,29000,'NV01'),
+('NV04','Le Quang Phuc','Nam','2001-01-01','7 Nguyen Chi Thanh, TP Da Lat, Tinh Lam Dong','2020-12-25','MB:02834031','Bang Dai Hoc',8000000,NULL,'NV01'),
+('NV05','Nguyen Thanh Tuan','Nam','2004-10-10','121 Xo Viet Nghe Tinh, Phuong 17, Quan Binh Thanh, TP Ho Chi Minh','2020-12-25','ACB:028740113','Bang TOEIC 650',9500000,NULL,'NV01'),
+('NV06','Nguyen Thi Dao','Nu','2005-11-11','64 Nguyen Thoi Trung, Phuong 6, Quan 5, TP Ho Chi Minh','2020-12-25','VCB:01387049',NULL,NULL,27000,'NV01'),
+('NV07','Cao Hoang Cam Tu','Nu','2003-04-21','To dan pho Hoa Binh, Phuong Cam Phuc Bac, TP Cam Ranh, Tinh Khanh Hoa','2020-12-25','MB:013801029','Bang Ke Toan',10000000,NULL,'NV01')
 
 
 INSERT INTO PHONG
@@ -166,7 +166,7 @@ VALUES
 INSERT INTO DO_UONG
 VALUES
     ('Nuoc ep buoi da xanh', 1,'Tinh Ca Mau'),
-    ('Heineken Ha Lan', 1,'Ha Lan'),
+    ('Heineken', 1,'Ha Lan'),
     ('Coca Cola', 1,'My')
 
 INSERT INTO DONHANG_KHACHHANG
@@ -219,50 +219,35 @@ VALUES
 
 INSERT INTO DONHANG_FD
 VALUES
-('DH01','Gio Heo muoi chien',1,0,2),
-('DH01','Sup Hai San',1,0,1),
-('DH01','Xoi bo cau',1,0,1),
-('DH02','Sup Hai San',1,0,1),
-('DH02','Ca hoi ap chao',1,0,1),
-('DH03','Khoai tay rocket',1,0,1),
-('DH04','Ca hoi ap chao',1,0,1),
-('DH04','Coca Cola',1,0,1),
-('DH05','Loi vai bo my nuong',1,0,1),
-('DH05','Xoi bo cau',1,0,1),
-('DH05','Heineken Ha Lan',1,0,1),
-('DH06','Loi vai bo my nuong',1,0,1),
-('DH06','Gio Heo muoi chien',1,0,1),
-('DH06','Salad ca ngu',1,0,1),
-('DH07','Salad ca ngu',1,0,1),
-('DH07','Nuoc ep buoi da xanh',1,0,1),
-('DH08','Khoai tay rocket',1,0,1),
-('DH08','Coca Cola',1,0,1),
-('DH09','Sup Hai San',1,0,1),
-('DH09','Xoi bo cau',1,0,2),
-('DH09','Heineken Ha Lan',1,0,1),
-('DH10','Loi vai bo my nuong',1,0,1),
-('DH10','Xoi bo cau',1,0,2),
-('DH10','Nuoc ep buoi da xanh',1,0,1),
-('DH11','Gio Heo muoi chien',1,0,1),
-('DH11','Sup Hai San',1,0,2),
-('DH11','Coca Cola',1,0,1),
-('DH12','Ca hoi ap chao',1,0,1),
-('DH12','Salad ca ngu',1,0,1)
-
-INSERT INTO HOADON_VOUCHER
-VALUES
-('HD01','V01'),
-('HD02','V04'),
-('HD03',NULL),
-('HD04',NULL),
-('HD05','V03'),
-('HD06','V03'),
-('HD07',NULL),
-('HD08',NULL),
-('HD09','V02'),
-('HD10','V02'),
-('HD11','V06'),
-('HD12','V05')
+('DH01','Gio Heo muoi chien',1,600000,2),
+('DH01','Sup Hai San',1,150000,1),
+('DH01','Xoi bo cau',1,250000,1),
+('DH02','Gio Heo muoi chien',1,300000,1),
+('DH02','Ca hoi ap chao',1,145000,1),
+('DH03','Khoai tay rocket',1,400000,4),
+('DH04','Ca hoi ap chao',1,290000,2),
+('DH04','Coca Cola',1,30000,1),
+('DH05','Loi vai bo my nuong',1,200000,1),
+('DH05','Xoi bo cau',1,250000,1),
+('DH05','Heineken',1,70000,1),
+('DH06','Loi vai bo my nuong',1,200000,1),
+('DH06','Gio Heo muoi chien',1,300000,1),
+('DH06','Salad ca ngu',1,200000,1),
+('DH07','Salad ca ngu',1,400000,2),
+('DH07','Nuoc ep buoi da xanh',1,120000,1),
+('DH08','Salad ca ngu',1,200000,1),
+('DH08','Coca Cola',1,30000,1),
+('DH09','Sup Hai San',1,150000,1),
+('DH09','Xoi bo cau',1,500000,2),
+('DH09','Heineken',1,70000,1),
+('DH10','Loi vai bo my nuong',1,200000,1),
+('DH10','Xoi bo cau',1,500000,2),
+('DH10','Nuoc ep buoi da xanh',1,120000,1),
+('DH11','Gio Heo muoi chien',1,600000,2),
+('DH11','Sup Hai San',1,300000,2),
+('DH11','Coca Cola',1,30000,1),
+('DH12','Ca hoi ap chao',1,145000,1),
+('DH12','Salad ca ngu',1,200000,1)
 
 INSERT INTO HOADON_THUNGAN
 VALUES
@@ -279,13 +264,28 @@ VALUES
 ('HD11','NV07'),
 ('HD12','NV07')
 
+INSERT INTO HOADON_VOUCHER
+VALUES
+('HD01','V01'),
+('HD02','V04'),
+('HD03',NULL),
+('HD04',NULL),
+('HD05','V03'),
+('HD06','V03'),
+('HD07',NULL),
+('HD08',NULL),
+('HD09','V02'),
+('HD10','V02'),
+('HD11','V06'),
+('HD12','V05')
+
 INSERT INTO PHUCVU_PHONG
 VALUES
-('P1','NV03','2021-11-11'),
-('P1','NV04','2022-10-11'),
-('P2','NV05','2023-12-05'),
-('P2','NV06','2023-12-05'),
-('P3','NV04','2023-11-12')
+('P1','NV03','2021-01-01'),
+('P1','NV04','2022-11-12'),
+('P2','NV05','2022-07-02'),
+('P2','NV06','2022-09-02'),
+('P3','NV04','2021-10-11')
 
 INSERT INTO CHEBIEN_MON_AN
 VALUES
