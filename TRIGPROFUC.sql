@@ -315,7 +315,7 @@ END
 GO
 
 --2.2.b
-ALTER TRIGGER trig_total_cost_of_bill
+CREATE TRIGGER trig_total_cost_of_bill
 ON DONHANG_FD
 FOR INSERT, UPDATE, DELETE
 AS
@@ -390,4 +390,3 @@ BEGIN
     END
 END
 GO
-
