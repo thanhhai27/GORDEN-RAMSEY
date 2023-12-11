@@ -67,6 +67,7 @@ BEGIN
     END
     IF @LOAI = 'DO AN'
     BEGIN
+        -- Có bắt buộc nhập MO TA và CANHBAODIUNG hay không (2 cột này k có ràng buộc NOT NULL)? 
         IF (@NGUYENLIEU IS NULL) INSERT INTO @NULLCOLUMN
         VALUES('cot NGUYENLIEU')
         IF (@MOTA IS NULL) INSERT INTO @NULLCOLUMN
@@ -106,6 +107,8 @@ BEGIN
     END
     ELSE IF @LOAI = 'DO UONG'
     BEGIN
+        -- Vẫn được nhập NGUYEN LIEU, MO TA,, NGAY THEM, TINH TRANG
+        -- Nếu người ta quên nhập NGUYEN LIEU, MO TA,, NGAY THEM, TINH TRANG thì sao???
         IF(@NGUYENLIEU IS NOT NULL) INSERT INTO @REDUNCOLUMN
         VALUES('cot NGUYENLIEU')
         IF(@MOTA IS NOT NULL) INSERT INTO @REDUNCOLUMN
@@ -149,6 +152,7 @@ GO
 
 --2.1.b
 CREATE PROC proc_update_food_and_drink
+    @VERSION INT = NULL -- Update by Bil
     @TEN VARCHAR(100) = NULL,
     @GIA BIGINT = NULL,
     @NGUYENLIEU VARCHAR(100) = NULL,
@@ -156,17 +160,6 @@ CREATE PROC proc_update_food_and_drink
     @XUATXU VARCHAR(100) = NULL
 AS
 BEGIN
-    IF (NOT EXISTS (
-						SELECT *
-						FROM FOODANDDRINK
-						WHERE @TEN = TEN
-					)
-		)
-    BEGIN
-        PRINT N'Ten mon khong ton tai!'
-        ROLLBACK TRAN
-        RETURN
-    END
     IF @GIA <= 0
     BEGIN
         PRINT N'Gia ca khong hop le!'
@@ -175,33 +168,36 @@ BEGIN
     END
     ELSE 
     BEGIN
-        DECLARE @GIAFD BIGINT
-        SELECT @GIAFD = GIA
-        FROM FOODANDDRINK
-        WHERE @TEN = TEN
-        IF(@GIAFD<>@GIA)
+        -- Modify by Bil
+        DECLARE @GIACU BIGINT
+        SELECT @GIACU = GIA
+        FROM deleted
+
+        IF (@GIACU <> GIA AND GIA IS NOT NULL)
         BEGIN
             UPDATE FOODANDDRINK
-            SET GIA = @GIA,NGUYENLIEU = @NGUYENLIEU
-            WHERE @TEN = TEN
-            UPDATE MON_AN
-            SET CACHCHEBIEN = @CACHCHEBIEN
-            WHERE @TEN = TEN
-            UPDATE DO_UONG
-            SET XUATXU = @XUATXU
-            WHERE @TEN = TEN
+            SET GIA = @GIA
+            WHERE TEN = @TEN
+                AND VERSION = @VERSION
         END
-        ELSE 
+
+        UPDATE FOODANDDRINK
+        SET NGUYENLIEU = @NGUYENLIEU
+        WHERE TEN = @TEN
+            AND VERSION = @VERSION
+        IF (@CACHCHEBIEN IS NOT NULL)
         BEGIN
-            UPDATE FOODANDDRINK
-            SET NGUYENLIEU = @NGUYENLIEU
-            WHERE @TEN = TEN
             UPDATE MON_AN
             SET CACHCHEBIEN = @CACHCHEBIEN
-            WHERE @TEN = TEN
+            WHERE TEN = @TEN
+                AND VERSION = @VERSION
+        END
+        IF (@XUATXU IS NOT NULL)
+        BEGIN
             UPDATE DO_UONG
             SET XUATXU = @XUATXU
-            WHERE @TEN = TEN
+            WHERE TEN = @TEN
+                AND VERSION = @VERSION
         END
     END
 END
