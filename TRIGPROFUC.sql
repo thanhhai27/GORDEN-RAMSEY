@@ -95,8 +95,6 @@ BEGIN
     END
     ELSE IF @LOAI = 'DO UONG'
     BEGIN
-        IF(@NGUYENLIEU IS NOT NULL) INSERT INTO @REDUNCOLUMN
-        VALUES('cot NGUYENLIEU')
         IF(@MOTA IS NOT NULL) INSERT INTO @REDUNCOLUMN
         VALUES('cot MOTA')
         IF(@NGAYTHEM IS NOT NULL) INSERT INTO @REDUNCOLUMN
@@ -113,6 +111,12 @@ BEGIN
             SELECT @SPARECOLUMN = STRING_AGG(SPARENAME,',')
             FROM @REDUNCOLUMN
             PRINT N'Ban khong duoc nhap '+@SPARECOLUMN
+            ROLLBACK TRAN
+            RETURN
+        END
+        IF(@NGUYENLIEU IS NULL)
+        BEGIN
+            PRINT N'Chua nhap du lieu o cot NGUYENLIEU'
             ROLLBACK TRAN
             RETURN
         END
@@ -193,7 +197,7 @@ BEGIN
 END
 GO
 --2.1.c
-CREATE PROC proc_delete_food_and_drink
+ALTER PROC proc_delete_food_and_drink
     @TEN VARCHAR(100) = NULL
 AS
 BEGIN
@@ -211,6 +215,12 @@ BEGIN
         ON HD.MADONHANG = DH.MDH
     WHERE @TEN = TEN))
     BEGIN
+        DELETE FROM DO_UONG
+        WHERE @TEN = TEN
+        DELETE FROM FD_VOUCHER_APDUNG
+        WHERE @TEN = TEN
+        DELETE FROM CHEBIEN_MON_AN
+        WHERE @TEN = TEN
         DELETE FROM MON_AN
         WHERE @TEN = TEN
         DELETE FROM FOODANDDRINK
@@ -225,15 +235,6 @@ BEGIN
 END
 GO
 
---2.2.b
--- CREATE TRIGGER trig_total_cost_of_bill
--- ON DONHANG_FD
--- FOR INSERT,UPDATE,DELETE
--- AS
--- BEGIN
---     UPDATE 
--- END
--- GO
 --2.3.a
 CREATE PROC proc_list_employee_of_room
     @SOPHONG VARCHAR(100) = NULL,
