@@ -12,66 +12,86 @@ CREATE TRIGGER trig_update_food_and_drink ON FOODANDDRINK
 FOR UPDATE
 AS
 BEGIN
+    -- Neu xuat hien update o cot GIA -> Tao version moi
     IF UPDATE(GIA)
     BEGIN
-        DECLARE @version INT,
-                @ten VARCHAR(100),
+        DECLARE @ten VARCHAR(100),
+                @version VARCHAR(100),
                 @gia BIGINT,
-                @loai VARCHAR(100),
                 @nguyenlieu VARCHAR(100),
                 @mota VARCHAR(100),
                 @ngaythem DATE,
                 @tinhtrang VARCHAR(100),
-                @xuatxu VARCHAR(100),
-                @cachchebien VARCHAR(100),
-                @canhbaodiung VARCHAR(100)
 
-        SELECT  @ten = TEN
+        SELECT  @ten = TEN,
+                @version = VERSION,
+                @gia = GIA,
+                @nguyenlieu = NGUYENLIEU,
+                @mota = MOTA,
+                @ngaythem = NGAYTHEM,
+                @tinhtrang = TINHTRANG
         FROM inserted
 
-        -- Xac dinh loai
-        IF (@ten IN 
-                    (
-                        SELECT TEN
-                        FROM MON_AN
-                    )
-            )
+        ROLLBACK TRAN
+
+
+    END
+    IF UPDATE(NGUYENLIEU)
+END
+
+-- Tinh doanh thu theo ngay, theo thang hoac theo nam
+CRETAE FUNCTION func_revenue (@ngay INT, @thang INT, @nam INT)
+RETURN BIGINT
+AS
+BEGIN
+    DECLARE @doanhthu BIGINT
+
+    IF (@ngay IS NOT NULL)
+    BEGIN
+        -- Kiem tra loi
+        IF (@thang IS NULL)
         BEGIN
-            SET @loai = 'DO AN'
+            PRINT('Ban chua nhap thang')
+            RETURN
+        END
+        IF (@nam IS NULL)
+        BEGIN
+            PRINT('Ban chua nhap nam')
+            RETURN
+        END
+
+        -- Tinh doanh thu theo ngay
+        SELECT @doanhthu = SUM(TONGTIEN)
+        FROM HOADON
+        WHERE DATE(NGAYTAOHDON) = @ngay
+            AND MONTH(NGAYTAOHDON) = @thang
+            AND YEAR(NGAYTAOHDON) = @nam
+    END
+    ELSE
+    BEGIN
+        IF (@ngay IS NOT NULL)
+        BEGIN
+            -- Kiem tra loi
+            IF (@nam IS NULL)
+            BEGIN
+                PRINT('Ban chua nhap nam')
+                RETURN
+            END
+
+            -- Tinh doanh thu theo thang
+            SELECT @doanhthu = SUM(TONGTIEN)
+            FROM HOADON
+            WHERE MONTH(NGAYTAOHDON) = @thang
+                AND YEAR(NGAYTAOHDON) = @year
         END
         ELSE
         BEGIN
-            SET @loai = 'DO UONG'
-        END
-
-        -- Lay du lieu gia va ngay them cu
-        SELECT  @gia = GIA
-                @ngaythem = NGAYTHEM
-        FROM deleted
-
-        -- Lay du lieu them moi
-        SELECT  @nguyenlieu = NGUYENLIEU,
-                @mota = MOTA
-        FROM inserted
-
-        -- Tinh version
-        SET @version = (
-                            SELECT MAX(VERSION)
-                            FROM FOODANDDRINK
-                            WHERE TEN = @ten
-                        ) + 1
-
-        -- Thiet lap tinh trang
-        SET @tinhtrang = 'Khong ban'
-
-        -- Thiet lap ngay them moi
-        UPDATE TABLE FOODANDDRINK
-        SET NGAYTHEM = CONVERT(datetime, GETDATE(), 111)
-        WHERE TEN = @ten AND TINHTRANG = 'Con ban'
-
-        -- Chen du lieu moi
-        INSERT INTO FOODANDDRINK
-        VALUES (@ten, @version, @gia, @nguyenlieu, @mota, @ngaythem, @tinhtrang)
+            -- Tinh doanh thu theo nam
+            SELECT @doanhthu = SUM(TONGTIEN)
+            FROM HOADON
+            WHERE YEAR(NGAYTAOHDON) = @nam
         END
     END
+
+    RETURN @doanhthu
 END
