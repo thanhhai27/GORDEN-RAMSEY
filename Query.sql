@@ -40,8 +40,8 @@ BEGIN
 END
 
 -- Tinh doanh thu theo ngay, theo thang hoac theo nam
-CRETAE FUNCTION func_revenue (@ngay INT, @thang INT, @nam INT)
-RETURN BIGINT
+CREATE FUNCTION func_revenue (@ngay INT, @thang INT, @nam INT)
+RETURNS VARCHAR(100)
 AS
 BEGIN
     DECLARE @doanhthu BIGINT
@@ -51,19 +51,17 @@ BEGIN
         -- Kiem tra loi
         IF (@thang IS NULL)
         BEGIN
-            PRINT('Ban chua nhap thang')
-            RETURN
+            RETURN 'Ban chua nhap thang'
         END
         IF (@nam IS NULL)
         BEGIN
-            PRINT('Ban chua nhap nam')
-            RETURN
+           RETURN 'Ban chua nhap nam'
         END
 
         -- Tinh doanh thu theo ngay
         SELECT @doanhthu = SUM(TONGTIEN)
         FROM HOADON
-        WHERE DATE(NGAYTAOHDON) = @ngay
+        WHERE DAY(NGAYTAOHDON) = @ngay
             AND MONTH(NGAYTAOHDON) = @thang
             AND YEAR(NGAYTAOHDON) = @nam
     END
@@ -74,8 +72,7 @@ BEGIN
             -- Kiem tra loi
             IF (@nam IS NULL)
             BEGIN
-                PRINT('Ban chua nhap nam')
-                RETURN
+                RETURN 'Ban chua nhap nam'
             END
 
             -- Tinh doanh thu theo thang
@@ -93,5 +90,5 @@ BEGIN
         END
     END
 
-    RETURN @doanhthu
+    RETURN CAST(@doanhthu AS VARCHAR(100))
 END
