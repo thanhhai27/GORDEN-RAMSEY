@@ -79,7 +79,7 @@ BEGIN
             SELECT @doanhthu = SUM(TONGTIEN)
             FROM HOADON
             WHERE MONTH(NGAYTAOHDON) = @thang
-                AND YEAR(NGAYTAOHDON) = @year
+                AND YEAR(NGAYTAOHDON) = @nam
         END
         ELSE
         BEGIN
