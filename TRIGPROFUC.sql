@@ -1,5 +1,5 @@
 --2.1.a
-CREATE PROC proc_insert_food_and_drink
+ALTER PROC [dbo].[proc_insert_food_and_drink]
     @LOAI VARCHAR(100) = NULL,
     @TEN VARCHAR(100) = NULL,
     @VERSION INT = NULL,
@@ -27,32 +27,34 @@ BEGIN
     FROM @NULLCOLUMN))
     BEGIN
         SELECT @MISSINGCOLUMN = STRING_AGG(COLUMNNAME,',')
-        FROM @NULLCOLUMN
-        PRINT N'Chua nhap du lieu o '+@MISSINGCOLUMN
-        ROLLBACK TRAN
-        RETURN
+        FROM @NULLCOLUMN;
+        EXEC sys.sp_addmessage  
+        @msgnum   = 60000  
+        ,@severity = 16  
+        ,@msgtext  = N'Chua nhap du lieu o (%s).'  
+        ,@lang = 'us_english'
+        ,@with_log = 'FALSE'
+        ,@replace = 'replace';
+  
+        DECLARE @msg NVARCHAR(2048) = FORMATMESSAGE(60000, @MISSINGCOLUMN);   
+  
+        THROW 60000, @msg, 1;
     END
     IF(EXISTS(SELECT 1
     FROM FOODANDDRINK
     WHERE @VERSION != VERSION))
     BEGIN
-        PRINT N'Khac version mon an'
-        ROLLBACK TRAN
-        RETURN
+        ;THROW 60001, 'Khac version mon an', 1;
     END
     IF EXISTS(SELECT 1
     FROM FOODANDDRINK
     WHERE @TEN = TEN )
     BEGIN
-        PRINT N'Trung ten mon an'
-        ROLLBACK TRAN
-        RETURN
+        ;THROW 60002, 'Trung ten mon an', 1;
     END
     IF @GIA <=0
     BEGIN
-        PRINT N'Gia nhap khong hop le'
-        ROLLBACK TRAN
-        RETURN
+        ;THROW 60003, 'Gia nhap khong hop le', 1;
     END
     IF @LOAI = 'DO AN'
     BEGIN
@@ -73,15 +75,21 @@ BEGIN
         BEGIN
             SELECT @MISSINGCOLUMN = STRING_AGG(COLUMNNAME,',')
             FROM @NULLCOLUMN
-            PRINT N'Chua nhap du lieu o '+@MISSINGCOLUMN
-            ROLLBACK TRAN
-            RETURN
+            EXEC sys.sp_addmessage  
+            @msgnum   = 60004
+            ,@severity = 16  
+            ,@msgtext  = N'Chua nhap du lieu o (%s).'  
+            ,@lang = 'us_english'
+            ,@with_log = 'FALSE'
+            ,@replace = 'replace';
+    
+            DECLARE @msg1 NVARCHAR(2048) = FORMATMESSAGE(60004, @MISSINGCOLUMN);   
+    
+            THROW 60004, @msg1, 1;
         END
         IF(@XUATXU IS NOT NULL) 
         BEGIN
-            PRINT N'Ban khong duoc nhap cot XUATXU'
-            ROLLBACK TRAN
-            RETURN
+            ;THROW 60005, 'Ban khong duoc nhap cot XUATXU', 1;
         END
         ELSE 
         BEGIN
@@ -95,12 +103,6 @@ BEGIN
     END
     ELSE IF @LOAI = 'DO UONG'
     BEGIN
-        IF(@MOTA IS NOT NULL) INSERT INTO @REDUNCOLUMN
-        VALUES('cot MOTA')
-        IF(@NGAYTHEM IS NOT NULL) INSERT INTO @REDUNCOLUMN
-        VALUES('cot NGAYTHEM')
-        IF(@TINHTRANG IS NOT NULL) INSERT INTO @REDUNCOLUMN
-        VALUES('cot TINHTRANG')
         IF(@CACHCHEBIEN IS NOT NULL) INSERT INTO @REDUNCOLUMN
         VALUES('cot CACHCHEBIEN')
         IF(@CANHBAODIUNG IS NOT NULL) INSERT INTO @REDUNCOLUMN
@@ -110,21 +112,44 @@ BEGIN
         BEGIN
             SELECT @SPARECOLUMN = STRING_AGG(SPARENAME,',')
             FROM @REDUNCOLUMN
-            PRINT N'Ban khong duoc nhap '+@SPARECOLUMN
-            ROLLBACK TRAN
-            RETURN
+            EXEC sys.sp_addmessage  
+            @msgnum   = 60006
+            ,@severity = 16  
+            ,@msgtext  = N'Ban khong duoc nhap (%s).'  
+            ,@lang = 'us_english'
+            ,@with_log = 'FALSE'
+            ,@replace = 'replace';
+    
+            DECLARE @msg2 NVARCHAR(2048) = FORMATMESSAGE(60006, @SPARECOLUMN);   
+  
+            THROW 60006, @msg2, 1;
         END
-        IF(@NGUYENLIEU IS NULL)
+        IF(@NGUYENLIEU IS NULL) INSERT INTO @NULLCOLUMN
+        VALUES('cot NGUYENLIEU')
+        IF(@MOTA IS NULL) INSERT INTO @NULLCOLUMN
+        VALUES('cot MOTA')
+        IF(@NGAYTHEM IS NULL) INSERT INTO @NULLCOLUMN
+        VALUES('cot NGAYTHEM')
+        IF(@TINHTRANG IS NULL) INSERT INTO @NULLCOLUMN
+        VALUES('cot TINHTRANG')
+        IF(@XUATXU IS NULL) INSERT INTO @NULLCOLUMN
+        VALUES('cot XUATXU')
+        IF(EXISTS(SELECT 1
+        FROM @NULLCOLUMN))
+        
         BEGIN
-            PRINT N'Chua nhap du lieu o cot NGUYENLIEU'
-            ROLLBACK TRAN
-            RETURN
-        END
-        IF(@XUATXU IS NULL)
-        BEGIN
-            PRINT N'Chua nhap du lieu o cot XUATXU'
-            ROLLBACK TRAN
-            RETURN
+            SELECT @MISSINGCOLUMN = STRING_AGG(COLUMNNAME,',')
+            FROM @NULLCOLUMN
+            EXEC sys.sp_addmessage  
+            @msgnum   = 60007
+            ,@severity = 16  
+            ,@msgtext  = N'Chua nhap du lieu o (%s).'  
+            ,@lang = 'us_english'
+            ,@with_log = 'FALSE'
+            ,@replace = 'replace';
+    
+            DECLARE @msg3 NVARCHAR(2048) = FORMATMESSAGE(60007, @MISSINGCOLUMN);
+            THROW 60007, @msg3, 1;
         END
         ELSE
         BEGIN
@@ -138,10 +163,8 @@ BEGIN
     END
 END
 GO
-
-
 --2.1.b
-CREATE PROC proc_update_food_and_drink
+ALTER PROC [dbo].[proc_update_food_and_drink]
     @TEN VARCHAR(100) = NULL,
     @GIA BIGINT = NULL,
     @NGUYENLIEU VARCHAR(100) = NULL,
@@ -153,15 +176,11 @@ BEGIN
     FROM FOODANDDRINK
     WHERE @TEN = TEN))
     BEGIN
-        PRINT N'Ten mon khong ton tai!'
-        ROLLBACK TRAN
-        RETURN
+        ;THROW 60000, 'Ten mon khong ton tai!', 1;
     END
     IF @GIA <= 0
     BEGIN
-        PRINT N'Gia ca khong hop le!'
-        ROLLBACK TRAN
-        RETURN
+        ;THROW 60001, 'Gia ca khong hop le!', 1;
     END
     ELSE 
     BEGIN
@@ -197,7 +216,7 @@ BEGIN
 END
 GO
 --2.1.c
-ALTER PROC proc_delete_food_and_drink
+ALTER PROC [dbo].[proc_delete_food_and_drink]
     @TEN VARCHAR(100) = NULL
 AS
 BEGIN
@@ -205,9 +224,7 @@ BEGIN
     FROM FOODANDDRINK
     WHERE @TEN = TEN))
     BEGIN
-        PRINT N'Mon nay khong ton tai'
-        ROLLBACK TRAN
-        RETURN
+        ;THROW 60000, 'Mon nay khong ton tai', 1;
     END
     IF(NOT EXISTS(SELECT DISTINCT TEN
     FROM HOADON HD
@@ -215,14 +232,18 @@ BEGIN
         ON HD.MADONHANG = DH.MDH
     WHERE @TEN = TEN))
     BEGIN
-        DELETE FROM DO_UONG
-        WHERE @TEN = TEN
-        DELETE FROM FD_VOUCHER_APDUNG
-        WHERE @TEN = TEN
-        DELETE FROM CHEBIEN_MON_AN
-        WHERE @TEN = TEN
-        DELETE FROM MON_AN
-        WHERE @TEN = TEN
+        IF(NOT EXISTS(SELECT DISTINCT TEN
+        FROM DO_UONG
+        WHERE @TEN = TEN))
+        BEGIN
+            DELETE FROM MON_AN
+            WHERE @TEN = TEN
+        END
+        ELSE
+        BEGIN
+            DELETE FROM DO_UONG
+            WHERE @TEN = TEN
+        END
         DELETE FROM FOODANDDRINK
         WHERE @TEN = TEN
     END
@@ -235,13 +256,15 @@ BEGIN
 END
 GO
 
+
 --2.3.a
 CREATE PROC proc_list_employee_of_room
     @SOPHONG VARCHAR(100) = NULL,
     @NGAYPHUCVU DATE = NULL
 AS
 BEGIN
-    SELECT HOTEN
+    SELECT PHUCVU.MANHANVIEN, NHANVIEN.HOTEN, NHANVIEN.GIOITINH, NHANVIEN.NGAYSINH, NHANVIEN.DIACHI, NHANVIEN.NGAYBATDAULAM, NHANVIEN.TKNGANHANG, 
+    NHANVIEN.BANGCAP, NHANVIEN.LUONGTHEOTHANG, NHANVIEN.LUONGTHEOGIO, NHANVIEN.MANVQUANLY
     FROM PHUCVU_PHONG
         JOIN PHUCVU
         ON PHUCVU.MANHANVIEN = PHUCVU_PHONG.MANVPHUCVU
