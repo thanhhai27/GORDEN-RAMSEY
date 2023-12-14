@@ -1,42 +1,27 @@
--- Menu
-CREATE VIEW Menu
-AS
-SELECT * FROM FOODANDDRINK AS F
-WHERE F.TINHTRANG = 'Con ban';
-GO
-
-SELECT * FROM Menu;
-GO
-
-CREATE TRIGGER trig_update_food_and_drink ON FOODANDDRINK
-FOR UPDATE
+CREATE TRIGGER trig_insert_employee ON NHANVIEN
+FOR INSERT
 AS
 BEGIN
-    -- Neu xuat hien update o cot GIA -> Tao version moi
-    IF UPDATE(GIA)
+    DECLARE @manhanvien VARCHAR(100)
+
+    SELECT @manhanvien = MANHANVIEN
+    FROM inserted
+
+    IF (LEFT(@manhanvien, 2) = 'PV')
     BEGIN
-        DECLARE @ten VARCHAR(100),
-                @version VARCHAR(100),
-                @gia BIGINT,
-                @nguyenlieu VARCHAR(100),
-                @mota VARCHAR(100),
-                @ngaythem DATE,
-                @tinhtrang VARCHAR(100),
-
-        SELECT  @ten = TEN,
-                @version = VERSION,
-                @gia = GIA,
-                @nguyenlieu = NGUYENLIEU,
-                @mota = MOTA,
-                @ngaythem = NGAYTHEM,
-                @tinhtrang = TINHTRANG
-        FROM inserted
-
-        ROLLBACK TRAN
-
-
+        INSERT INTO PHUCVU
+        VALUES (@manhanvien)
     END
-    IF UPDATE(NGUYENLIEU)
+    ELSE IF (LEFT(@manhanvien, 2) = 'DB')
+    BEGIN
+        INSERT INTO DAUBEP
+        VALUES (@manhanvien)
+    END
+    ELSE IF (LEFT(@manhanvien, 2) = 'TN')
+    BEGIN
+        INSERT INTO THUNGAN
+        VALUES (@manhanvien)
+    END
 END
 
 -- Tinh doanh thu theo ngay, theo thang hoac theo nam
